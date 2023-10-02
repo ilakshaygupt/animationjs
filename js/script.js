@@ -22,8 +22,8 @@ function createAtom(x, y, element) {
         x,
         y,
         element,
-        velocityX: Math.random() * 2 + 1,
-        velocityY: Math.random() * 2 + 1,
+        velocityX: (Math.random() - 0.5) * 8,//increased randomness
+        velocityY: (Math.random() - 0.5) * 8,
     });
 }
 
@@ -83,13 +83,22 @@ function checkAtomCollision() {
                   const dx = atom2.x - atom1.x;
                   const dy = atom2.y - atom1.y;
                   const angle = Math.atan2(dy, dx);
+                  // Calculate new velocities after collision
+                  const v1i = atom1.velocityX * Math.cos(angle) + atom1.velocityY * Math.sin(angle);
+                  const v2i = atom2.velocityX * Math.cos(angle) + atom2.velocityY * Math.sin(angle);
+                  const v1f = v2i;
+                  const v2f = v1i;
+                  // Update velocities after collision
+                  atom1.velocityX = v1f * Math.cos(angle)*1.2;
+                  atom1.velocityY = v1f * Math.sin(angle)*1.2;
+                  atom2.velocityX = v2f * Math.cos(angle)*1.2;
+                  atom2.velocityY = v2f * Math.sin(angle)*1.2;
                   // Move atoms away to avoid sticking
                   const overlap = 100 - distance;
                   atom1.x -= overlap * Math.cos(angle);
                   atom1.y -= overlap * Math.sin(angle);
                   atom2.x += overlap * Math.cos(angle);
                   atom2.y += overlap * Math.sin(angle);
-
             }
         }
     }
