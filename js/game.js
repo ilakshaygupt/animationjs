@@ -4,6 +4,10 @@ const ctx = canvas.getContext('2d');
 const atoms = [];
 canvas.width = window.innerWidth;
 canvas.height = window.innerHeight;
+document.getElementById("goBackBtn").addEventListener("click", () => {
+
+    window.location.href = "index.html";
+});
 
 const atomDegrees = {
     'H': 'He',
