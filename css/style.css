@@ -22,15 +22,19 @@ body {
 canvas {
     width: 100%;
     height: 100%;
-    background-color: transparent   ;
+    background-color: transparent ;
     cursor: grab;
 }
 #buttoncontainer{
     display: flex;
-    
     align-items: center;
-    
     margin-top: 20px;
+}
+#atomcounts{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-gap: 10px;
+
 }
 
 #createAtomBtn {
@@ -42,8 +46,16 @@ canvas {
     background-color: black;
     color: white;
     cursor: pointer;
-
 }
+
+#leftAtomCount {
+    position: absolute;
+    top: 20%;
+    left: 10px;
+    color: white;
+    font-size: 20px;
+}
+
 
 #goBackBtn{
     margin-top: 4px;

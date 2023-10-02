@@ -112,11 +112,37 @@ function checkAtomCollision() {
         }
     }
 }
+function updateAtomCounts() {
+    let HatomCount = 0;
+    let HeatomCount = 0;
+    let LiatomCount = 0;
+    let BeatomCount = 0;
+    atoms.forEach(atom => {
+        if(atom.element=='H') {
+            HatomCount++;
+        }
+        else if(atom.element=='He') {
+            HeatomCount++;
+        }
+        else if(atom.element=='Li') {
+            LiatomCount++;
+        }
+        else if(atom.element=='Be') {
+            BeatomCount++;
+        }
+    });
+    document.getElementById("HatomCount").textContent = `H : ${HatomCount}`;
+    document.getElementById("HeatomCount").textContent = `He : ${HeatomCount}`;
+    document.getElementById("LiatomCount").textContent = `Li : ${LiatomCount}`;
+    document.getElementById("BeatomCount").textContent = `Be : ${BeatomCount}`;
+}
+
 
 //continuously draw
 function gameLoop() {
-    ctx.clearRect(0, 0, canvas.width, canvas.height);
     moveAtoms();
+    updateAtomCounts();
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
     checkAtomCollision();
     atoms.forEach(atom => {
         drawAtom(atom.x, atom.y, atom.element);

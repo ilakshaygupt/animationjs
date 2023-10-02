@@ -3,21 +3,27 @@
 
 <head>
     <meta charset="UTF-8">
+    <title>ATOMIC SMASH</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <title>Animation</title>
     <link rel="stylesheet" href="css/style.css">
 </head>
+
 <body background="assets/background.jpeg">
-    <div id ="canvascontainer">
-    <canvas id="gameCanvas" back></canvas>
+    <div id="canvascontainer">
+        <canvas id="gameCanvas" back></canvas>
     </div>
     <div id="buttoncontainer">
-    <button id="createAtomBtn">Create Atom</button>
-    <button id="goBackBtn">Go Back to Main Page</button>
+        <button id="createAtomBtn">Create Atom</button>
+        <button id="goBackBtn">Go Back to Main Page</button>
     </div>
-    
-    <script src="js/game.js"></script>
-    </body>
-</html>
+    <div id="leftAtomCount">
+        <p id="HatomCount">H : 0</p>
+        <p id="HeatomCount">He : 0</p>
+        <p id="LiatomCount">Li : 0</p>
+        <p id="BeatomCount">Be : 0</p>
+    </div>
 
+    <script src="./js/game.js"></script>
+</body>
+
+</html>
