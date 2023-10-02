@@ -11,6 +11,11 @@ const atomDegrees = {
     'Li': 'Be'
   ,
 };
+const atomColors = {
+    'H': '#3498db', 
+    'He': '#e74c3c', 
+    'Li': '#2ecc71', 
+};
 
 function createAtom(x, y, element) {
     atoms.push({
@@ -23,13 +28,16 @@ function createAtom(x, y, element) {
 }
 
 function drawAtom(x, y, element) {
+     const color = atomColors[element] || '#3498db';     ;
     ctx.beginPath();
-    ctx.arc(x, y, 25, 0, Math.PI * 2);
-    ctx.fillStyle = '#3498db';
+    ctx.arc(x, y, 50, 0, Math.PI * 2);
+    ctx.fillStyle = color;
     ctx.fill();
     ctx.fillStyle = '#fff';
-    ctx.font = '20px Arial';
-    ctx.fillText(element, x - 7, y + 7);
+    ctx.font = '35px Arial';
+    ctx.fillText(element,x-10,y);
+    ctx.textalign='center';
+    ctx.textBaseline='middle';
 }
 
 function moveAtoms() {
@@ -38,10 +46,10 @@ function moveAtoms() {
         atom.y += atom.velocityY;
 
         // Bounce off the edges
-        if (atom.x - 25 < 0 || atom.x + 25 > canvas.width) {
+        if (atom.x - 50 < 0 || atom.x + 50 > canvas.width) {
             atom.velocityX *= -1;
         }
-        if (atom.y - 25 < 0 || atom.y + 25 > canvas.height) {
+        if (atom.y - 50 < 0 || atom.y + 50 > canvas.height) {
             atom.velocityY *= -1;
         }
     });
@@ -53,8 +61,7 @@ function checkAtomCollision() {
             const atom1 = atoms[i];
             const atom2 = atoms[j];
             const distance = Math.sqrt((atom1.x - atom2.x) ** 2 + (atom1.y - atom2.y) ** 2);
-
-            if (distance < 50 && atom1.element === atom2.element) {
+            if (distance < 100 && atom1.element == atom2.element) {
                 const newDegree = atomDegrees[atom1.element];
                 if (newDegree) {
                     createAtom(atom1.x, atom1.y, newDegree);
@@ -80,8 +87,8 @@ function gameLoop() {
 
 
 createAtomBtn.addEventListener('click', () => {
-    const x = Math.random() * (canvas.width - 50) + 40;
-    const y = Math.random() * (canvas.height - 50) + 40;
+    const x = Math.random() * (canvas.width - 100) + 40;
+    const y = Math.random() * (canvas.height - 100) + 40;
     createAtom(x, y, 'H');
 });
 
