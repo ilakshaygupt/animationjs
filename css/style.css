@@ -25,6 +25,17 @@ canvas {
     background-color: transparent   ;
     cursor: grab;
 }
+#buttoncontainer{
+    display: flex;
+    align-items: center;
+    margin-top: 20px;
+}
+#atomcounts{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-gap: 10px;
+
+}
 
 #createAtomBtn {
     margin-top: 4px;
@@ -35,5 +46,33 @@ canvas {
     background-color: black;
     color: white;
     cursor: pointer;
-  
+}
+
+#leftAtomCount {
+    position: absolute;
+    top: 20%;
+    left: 10px;
+    color: white;
+    font-size: 20px;
+}
+#restartBtn{
+    margin-top: 4px;
+    width: 180px;
+    height: 80px;
+    border-radius: 30px;
+    font-size: 20px;
+    background-color: black;
+    color: white;
+    cursor: pointer;
+}
+
+#goBackBtn{
+    margin-top: 4px;
+    width: 180px;
+    height: 80px;
+    border-radius: 30px;
+    font-size: 20px;
+    background-color: black;
+    color: white;
+    cursor: pointer;
 }

@@ -1,0 +1,61 @@
+body {
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-image: url("../assets/earth.jpg");
+    background-size: cover;
+    background-attachment: fixed;
+}
+
+.heading-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    flex-direction: column;
+}
+
+.heading {
+    margin-top: 80px;
+    font-size: 90px;
+    text-align: center;
+    color: white;
+    animation: moveFromTop 3s ease-in-out forwards,  ease-in-out forwards 5s;
+}
+
+#btn {
+    padding: 15px 32px;
+    font-size: 30px;
+    background-color: rgba(0, 0, 0, 0.398);
+    color: aliceblue;
+    margin-top: 15vh;
+    position: absolute;
+    left: 42%;
+    bottom: 15%;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    animation: moveFromBottom 3s ease-in-out forwards,  ease-in-out forwards 5s;
+}
+
+@keyframes moveFromTop {
+    0% {
+        transform: translateY(-100%);
+        opacity: 0;
+    }
+    100% {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+@keyframes moveFromBottom {
+    0% {
+        transform: translateY(100%);
+        opacity: 0;
+    }
+    100% {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
