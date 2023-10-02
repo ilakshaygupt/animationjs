@@ -44,13 +44,22 @@ function moveAtoms() {
     atoms.forEach(atom => {
         atom.x += atom.velocityX;
         atom.y += atom.velocityY;
-
-        // Bounce off the edges
-        if (atom.x - 50 < 0 || atom.x + 50 > canvas.width) {
-            atom.velocityX *= -1;
+        if (atom.x - 50 < 0 ) {
+            atom.velocityX *= -1;//change speed in oppsotie direction
+            atom.x = 50;//set coordinate so it doesnt go off canvas
         }
-        if (atom.y - 50 < 0 || atom.y + 50 > canvas.height) {
+        else if(atom.x + 50 > canvas.width){
+            atom.velocityX *= -1;
+            atom.x = canvas.width-50;
+        }
+        if (atom.y - 50 < 0 ) {
             atom.velocityY *= -1;
+            atom.y = 50;
+        }
+        else if( atom.y + 50 > canvas.height){
+            atom.velocityY *= -1;
+            atom.y = canvas.height-50;
+
         }
     });
 }
@@ -70,14 +79,16 @@ function checkAtomCollision() {
                 }
             }
             else if(distance<100 && atom1.element != atom2.element){
-                dx=atom2.x-atom1.x;
-                dy=atom2.y-atom1.y;
-                angle=Math.atan2(dy,dx);
-                const overlap = 100 - distance;
-                atom1.x -= overlap * Math.cos(angle);
-                atom1.y -= overlap * Math.sin(angle);
-                atom2.x += overlap * Math.cos(angle);
-                atom2.y += overlap * Math.sin(angle);
+                  // Calculate the angle between atoms
+                  const dx = atom2.x - atom1.x;
+                  const dy = atom2.y - atom1.y;
+                  const angle = Math.atan2(dy, dx);
+                  // Move atoms away to avoid sticking
+                  const overlap = 100 - distance;
+                  atom1.x -= overlap * Math.cos(angle);
+                  atom1.y -= overlap * Math.sin(angle);
+                  atom2.x += overlap * Math.cos(angle);
+                  atom2.y += overlap * Math.sin(angle);
 
             }
         }
@@ -98,8 +109,8 @@ function gameLoop() {
 
 
 createAtomBtn.addEventListener('click', () => {
-    const x = Math.random() * (canvas.width - 100) + 40;
-    const y = Math.random() * (canvas.height - 100) + 40;
+    const x = Math.random() * (canvas.width - 100) ;
+    const y = Math.random() * (canvas.height - 100) ;
     createAtom(x, y, 'H');
 });
 
