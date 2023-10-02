@@ -4,6 +4,7 @@ const ctx = canvas.getContext('2d');
 const atoms = [];
 canvas.width = window.innerWidth;
 canvas.height = window.innerHeight;
+document.getElementById("restartBtn").addEventListener("click", restartGame);
 document.getElementById("goBackBtn").addEventListener("click", () => {
 
     window.location.href = "index.html";
@@ -33,7 +34,7 @@ function createAtom(x, y, element) {
 }
 
 function drawAtom(x, y, element) {
-     const color = atomColors[element] || '#3498db';     ;
+     const color = atomColors[element] ;
     ctx.beginPath();
     ctx.arc(x, y, 50, 0, Math.PI * 2);
     ctx.fillStyle = color;
@@ -138,6 +139,17 @@ function updateAtomCounts() {
 }
 
 
+function restartGame() {
+    atoms.forEach(atom => {
+        atom.velocityX=0;
+        atom.velocityY=0;
+    });
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    atoms.length = 0; 
+    updateAtomCounts();
+    gameLoop();
+}
+
 //continuously draw
 function gameLoop() {
     moveAtoms();
@@ -157,7 +169,6 @@ createAtomBtn.addEventListener('click', () => {
     const y = Math.random() * (canvas.height - 100) ;
     createAtom(x, y, 'H');
 });
-
 
 
 gameLoop();
