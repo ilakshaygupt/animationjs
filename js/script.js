@@ -69,6 +69,17 @@ function checkAtomCollision() {
                     atoms.splice(j - 1, 1);
                 }
             }
+            else if(distance<100 && atom1.element != atom2.element){
+                dx=atom2.x-atom1.x;
+                dy=atom2.y-atom1.y;
+                angle=Math.atan2(dy,dx);
+                const overlap = 100 - distance;
+                atom1.x -= overlap * Math.cos(angle);
+                atom1.y -= overlap * Math.sin(angle);
+                atom2.x += overlap * Math.cos(angle);
+                atom2.y += overlap * Math.sin(angle);
+
+            }
         }
     }
 }
