@@ -15,6 +15,7 @@ const atomColors = {
     'H': '#3498db', 
     'He': '#e74c3c', 
     'Li': '#2ecc71', 
+    'Be': '#f1c40f',
 };
 
 function createAtom(x, y, element) {
@@ -70,7 +71,11 @@ function checkAtomCollision() {
             const atom1 = atoms[i];
             const atom2 = atoms[j];
             const distance = Math.sqrt((atom1.x - atom2.x) ** 2 + (atom1.y - atom2.y) ** 2);
-            if (distance < 100 && atom1.element == atom2.element) {
+            if(distance<100 && atom1.element == 'Be' && atom2.element == 'Be'){
+                atoms.splice(i, 1);
+                atoms.splice(j - 1, 1);
+            }
+            else if (distance < 100 && atom1.element == atom2.element) {
                 const newDegree = atomDegrees[atom1.element];
                 if (newDegree) {
                     createAtom(atom1.x, atom1.y, newDegree);

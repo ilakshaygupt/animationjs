@@ -8,12 +8,21 @@ body {
     margin: 0;
     padding: 0;
     flex-direction: column;
+    backdrop-filter: blur(3px);
+}
+
+#canvascontainer{
+    width: 80%;
+    height: 80%;
+    background-image: url(../assets/background.jpeg);
+    border: 1px  solid white;
+    border-radius: 30px;
 }
 
 canvas {
     width: 80%;
     height: 80%;
-    background-color: white;
+    background-color: transparent   ;
     cursor: grab;
 }
 
