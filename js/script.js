@@ -5,6 +5,13 @@ const atoms = [];
 canvas.width = window.innerWidth;
 canvas.height = window.innerHeight;
 
+const atomDegrees = {
+    'H': 'He',
+    'He': 'Li',
+    'Li': 'Be'
+  ,
+};
+
 function createAtom(x, y, element) {
     atoms.push({
         x,
@@ -40,10 +47,30 @@ function moveAtoms() {
     });
 }
 
+function checkAtomCollision() {
+    for (let i = 0; i < atoms.length; i++) {
+        for (let j = i + 1; j < atoms.length; j++) {
+            const atom1 = atoms[i];
+            const atom2 = atoms[j];
+            const distance = Math.sqrt((atom1.x - atom2.x) ** 2 + (atom1.y - atom2.y) ** 2);
+
+            if (distance < 50 && atom1.element === atom2.element) {
+                const newDegree = atomDegrees[atom1.element];
+                if (newDegree) {
+                    createAtom(atom1.x, atom1.y, newDegree);
+                    atoms.splice(i, 1);
+                    atoms.splice(j - 1, 1);
+                }
+            }
+        }
+    }
+}
+
 //continuously draw
 function gameLoop() {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
     moveAtoms();
+    checkAtomCollision();
     atoms.forEach(atom => {
         drawAtom(atom.x, atom.y, atom.element);
     });
