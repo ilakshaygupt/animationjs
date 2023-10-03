@@ -103,6 +103,18 @@ function checkAtomCollision() {
                   atom1.velocityY = v1f * Math.sin(angle)*1.2;
                   atom2.velocityX = v2f * Math.cos(angle)*1.2;
                   atom2.velocityY = v2f * Math.sin(angle)*1.2;
+
+                  //icnreased speed stationary atoms
+                  if (Math.abs(atom1.velocityX) < 1.5 || Math.abs(atom1.velocityY) < 1.5) {
+                    atom1.velocityX = -0.4 * 8;
+                    atom1.velocityY = -0.4 * 8;
+                    
+                  }
+                  if (Math.abs(atom2.velocityX) < 1.5 || Math.abs(atom2.velocityY) < 1.5) {
+                    atom2.velocityX =   0.4 * 8;
+                    atom2.velocityY =   0.4 * 8;
+                    
+                  }
                   // Move atoms away to avoid sticking
                   const overlap = 100 - distance;
                   atom1.x -= overlap * Math.cos(angle);

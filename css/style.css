@@ -18,6 +18,17 @@ body {
     border: 1px  solid white;
     border-radius: 30px;
 }
+.bttn{
+    margin-top: 4px;
+    width: 180px;
+    height: 80px;
+    border-radius: 30px;
+    font-size: 20px;
+    background-color: black;
+    color: white;
+    cursor: pointer;
+
+}
 
 canvas {
     width: 100%;
@@ -30,16 +41,6 @@ canvas {
     align-items: center;
     margin-top: 20px;
 }
-#createAtomBtn {
-    margin-top: 4px;
-    width: 180px;
-    height: 80px;
-    border-radius: 30px;
-    font-size: 20px;
-    background-color: black;
-    color: white;
-    cursor: pointer;
-}
 
 #leftAtomCount {
     position: absolute;
@@ -47,25 +48,4 @@ canvas {
     left: 10px;
     color: white;
     font-size: 20px;
-}
-#restartBtn{
-    margin-top: 4px;
-    width: 180px;
-    height: 80px;
-    border-radius: 30px;
-    font-size: 20px;
-    background-color: black;
-    color: white;
-    cursor: pointer;
-}
-
-#goBackBtn{
-    margin-top: 4px;
-    width: 180px;
-    height: 80px;
-    border-radius: 30px;
-    font-size: 20px;
-    background-color: black;
-    color: white;
-    cursor: pointer;
 }
