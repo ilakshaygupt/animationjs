@@ -30,13 +30,6 @@ canvas {
     align-items: center;
     margin-top: 20px;
 }
-#atomcounts{
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    grid-gap: 10px;
-
-}
-
 #createAtomBtn {
     margin-top: 4px;
     width: 180px;

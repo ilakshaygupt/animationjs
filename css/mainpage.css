@@ -1,19 +1,8 @@
 body {
-    margin: 0;
-    padding: 0;
-    overflow: hidden;
     background-image: url("../assets/earth.jpg");
     background-size: cover;
-    background-attachment: fixed;
 }
 
-.heading-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    flex-direction: column;
-}
 
 .heading {
     margin-top: 80px;
@@ -28,7 +17,6 @@ body {
     font-size: 30px;
     background-color: rgba(0, 0, 0, 0.398);
     color: aliceblue;
-    margin-top: 15vh;
     position: absolute;
     left: 42%;
     bottom: 15%;
