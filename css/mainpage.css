@@ -9,7 +9,7 @@ body {
     font-size: 90px;
     text-align: center;
     color: white;
-    animation: moveFromTop 3s ease-in-out forwards,  ease-in-out forwards 5s;
+    animation: moveFromTop 3s ease-in-out ,  ease-in-out  5s;
 }
 
 #btn {
@@ -23,7 +23,7 @@ body {
     border: none;
     cursor: pointer;
     border-radius: 5px;
-    animation: moveFromBottom 3s ease-in-out forwards,  ease-in-out forwards 5s;
+    animation: moveFromBottom 3s ease-in-out,  ease-in-out 5s;
 }
 
 @keyframes moveFromTop {

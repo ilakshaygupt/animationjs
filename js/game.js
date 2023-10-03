@@ -36,7 +36,7 @@ function createAtom(x, y, element) {
 function drawAtom(x, y, element) {
      const color = atomColors[element] ;
     ctx.beginPath();
-    ctx.arc(x, y, 50, 0, Math.PI * 2);
+    ctx.arc(x, y, 45, 0, Math.PI * 2);
     ctx.fillStyle = color;
     ctx.fill();
     ctx.fillStyle = '#fff';
@@ -50,21 +50,21 @@ function moveAtoms() {
     atoms.forEach(atom => {
         atom.x += atom.velocityX;
         atom.y += atom.velocityY;
-        if (atom.x - 50 < 0 ) {
+        if (atom.x - 45 < 0 ) {
             atom.velocityX *= -1;//change speed in oppsotie direction
-            atom.x = 50;//set coordinate so it doesnt go off canvas
+            atom.x = 45;//set coordinate so it doesnt go off canvas
         }
-        else if(atom.x + 50 > canvas.width){
+        else if(atom.x + 45 > canvas.width){
             atom.velocityX *= -1;
-            atom.x = canvas.width-50;
+            atom.x = canvas.width-45;
         }
-        if (atom.y - 50 < 0 ) {
+        if (atom.y - 45 < 0 ) {
             atom.velocityY *= -1;
-            atom.y = 50;
+            atom.y = 45;
         }
-        else if( atom.y + 50 > canvas.height){
+        else if( atom.y + 45 > canvas.height){
             atom.velocityY *= -1;
-            atom.y = canvas.height-50;
+            atom.y = canvas.height-45;
 
         }
     });
@@ -76,11 +76,11 @@ function checkAtomCollision() {
             const atom1 = atoms[i];
             const atom2 = atoms[j];
             const distance = Math.sqrt((atom1.x - atom2.x) ** 2 + (atom1.y - atom2.y) ** 2);
-            if(distance<100 && atom1.element == 'Be' && atom2.element == 'Be'){
+            if(distance<90 && atom1.element == 'Be' && atom2.element == 'Be'){
                 atoms.splice(i, 1);
                 atoms.splice(j - 1, 1);
             }
-            else if (distance < 100 && atom1.element == atom2.element) {
+            else if (distance < 90 && atom1.element == atom2.element) {
                 const newDegree = atomDegrees[atom1.element];
                 if (newDegree) {
                     createAtom(atom1.x, atom1.y, newDegree);
@@ -88,7 +88,7 @@ function checkAtomCollision() {
                     atoms.splice(j - 1, 1);
                 }
             }
-            else if(distance<100 && atom1.element != atom2.element){
+            else if(distance<90 && atom1.element != atom2.element){
                   // Calculate the angle between atoms
                   const dx = atom2.x - atom1.x;
                   const dy = atom2.y - atom1.y;
@@ -116,7 +116,7 @@ function checkAtomCollision() {
                     
                   }
                   // Move atoms away to avoid sticking
-                  const overlap = 100 - distance;
+                  const overlap = 90 - distance;
                   atom1.x -= overlap * Math.cos(angle);
                   atom1.y -= overlap * Math.sin(angle);
                   atom2.x += overlap * Math.cos(angle);
@@ -173,12 +173,9 @@ function gameLoop() {
     });
     requestAnimationFrame(gameLoop);
 }
-
-
-
 createAtomBtn.addEventListener('click', () => {
-    const x = Math.random() * (canvas.width - 100) ;
-    const y = Math.random() * (canvas.height - 100) ;
+    const x = Math.random() * (canvas.width - 90) ;
+    const y = Math.random() * (canvas.height - 90) ;
     createAtom(x, y, 'H');
 });
 
